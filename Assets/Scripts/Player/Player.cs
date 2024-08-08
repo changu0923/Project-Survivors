@@ -2,70 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IPlayerMoveable
+public class Player : MonoBehaviour
 {
-    private float inputX;
-    private float inputY;
-    private bool isFacingLeft;
-    private Vector2 moveDir;
+    private int currentHP;
+    private int maxHP;
+    private int currentEXP;
+    private int maxEXP;
+    private int level = 1;
+    private float moveSpeed = 2.0f;
+    private float speedMult = 1.0f;
+    private float skillCoolTimeMult;
+    private bool isDead;
 
-    [Header("이동속도")]
-    [SerializeField] float moveSpeed;
+    public float MoveSpeed { get { return moveSpeed * speedMult; } }
+    public float SkillCoolTimeMult { get { return skillCoolTimeMult; } }
+    public bool isAlive { get { return !isDead; } }
 
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
 
-    private void Awake()
+    private void Start()
     {
-       rb= GetComponent<Rigidbody2D>(); 
-       spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        InitGame();
     }
 
-    private void Update()
+    private void InitGame()
     {
-        GetInput();
+        isDead = false;
+        currentHP = maxHP;
+        currentEXP = 0;
+        speedMult = 1.0f;
     }
-
-    private void FixedUpdate()
-    {
-        Move();
-    }
-
-    #region Player Movement
-    public void GetInput()
-    {
-        inputX = Input.GetAxisRaw("Horizontal");
-        inputY = Input.GetAxisRaw("Vertical");
-    }
-
-    public void Move()
-    {        
-        Flip();
-        moveDir = new Vector2(inputX, inputY).normalized;
-        rb.velocity = moveDir * moveSpeed;
-#if UNITY_EDITOR
-        Debug.Log($"Current Velocity is : {rb.velocity}");
-#endif
-
-    }
-
-    #endregion
-
-    #region Animation
-
-    // 음수 : 왼쪽, 양수 : 오른쪽 
-    private void Flip()
-    {
-        if(inputX > 0)
-        {
-            isFacingLeft = false;
-        }
-        else if(inputX < 0)
-        {
-            isFacingLeft = true;
-        }
-        spriteRenderer.flipX = isFacingLeft;
-    }
-
-    #endregion
 }
