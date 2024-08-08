@@ -25,6 +25,11 @@ public abstract class Skill : MonoBehaviour
 
     }
 
+    public void StartSkill()
+    {
+        skillCoroutine = StartCoroutine(RepeatSkillCoroutine());
+    }
+
     public void SkillLevelUp()
     {
         skillLevel++;
