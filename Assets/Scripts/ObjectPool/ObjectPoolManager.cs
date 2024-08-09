@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ObjectPoolManager : MonoBehaviour
@@ -24,21 +23,41 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
     #endregion
-
+    
+    private Dictionary<string, ObjectPoolData> dataDict = new Dictionary<string, ObjectPoolData>(); 
     private Dictionary<string, Queue<GameObject>> poolDict = new Dictionary<string, Queue<GameObject>>();
 
     public void CreatePool(string poolName, GameObject prefab, int initSize)
     {
         if (poolDict.ContainsKey(poolName) == false)
         {
+            ObjectPoolData newData = new ObjectPoolData(poolName, prefab, initSize);
+
             Queue<GameObject> newPool = new Queue<GameObject>();
             for (int i = 0; i < initSize; i++)
             {
-                GameObject obj = Instantiate(prefab);
+                GameObject obj = GameObject.Instantiate(prefab);
                 obj.SetActive(false);
                 newPool.Enqueue(obj);
             }
             poolDict[poolName] = newPool;
+            dataDict[poolName] = newData;
+        }
+    }
+
+    // 큐에 풀링할 오브젝트가 부족하면, 오브젝트풀 데이터에서 해당 오브젝트를 찾아 캐퍼시티를 2배로 늘린 후 큐에도 2배 넣습니다.
+    private void AddCapacity(string poolName)
+    {
+        ObjectPoolData currentData = dataDict[poolName];
+        Queue<GameObject> targetQueue = poolDict[poolName];
+        int capacity = currentData.Capacity * 2;
+        currentData.Capacity = capacity;
+
+        for (int i = 0; i < capacity; i++)
+        {
+            GameObject obj = Instantiate(currentData.Prefab);
+            obj.SetActive(false);
+            targetQueue.Enqueue(obj);
         }
     }
 
@@ -47,6 +66,7 @@ public class ObjectPoolManager : MonoBehaviour
         if(poolDict.ContainsKey(poolName))
         {
             Queue<GameObject> pool = poolDict[poolName];
+            ObjectPoolData currentPoolData = dataDict[poolName];
             if(pool.Count > 0)
             {
                 GameObject obj = pool.Dequeue();
@@ -55,14 +75,28 @@ public class ObjectPoolManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError($"{poolName} 캐퍼시티 부족. 더 늘리세요.");
-                return null;
+                AddCapacity(poolName);
+                return Instantiate(poolName);
             }
         }
         else
         {
             Debug.LogError($"오브젝트 풀에 {poolName}에 해당하는 큐가 없습니다.");
             return null;
+        }
+    }
+
+    public void Destory(string poolName, GameObject obj)
+    {
+        if (poolDict.ContainsKey(poolName))
+        {
+            obj.SetActive(false);
+            poolDict[poolName].Enqueue(obj);
+        }
+        else
+        {
+            Debug.LogError($"오브젝트 풀에 {poolName}에 해당하는 큐가 없습니다.");
+            Destroy(obj);
         }
     }
 }
