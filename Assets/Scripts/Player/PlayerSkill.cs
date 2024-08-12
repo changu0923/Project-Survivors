@@ -7,8 +7,6 @@ public class PlayerSkill : MonoBehaviour
     private Player player;
     private Dictionary<Skill, string> skillDict = new Dictionary<Skill, string>();
 
-    public Skill testSkill;
-
     private void Awake()
     {
        player = GetComponent<Player>(); 
@@ -16,7 +14,7 @@ public class PlayerSkill : MonoBehaviour
 
     private void Start()
     {
-        AddSkill(testSkill);
+
     }
 
     public void AddSkill(Skill skill)
