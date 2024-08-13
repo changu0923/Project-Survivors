@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,12 +32,19 @@ public class GameManager : MonoBehaviour
 
     public Player Player { get => player; }
     public int RoundTime { get => roundTime; }
-    
+
+    public Action OnRoundTimeChanged;
+
+    private void Start()
+    {
+        InitGame();
+    }
 
     private void InitGame()
     {
         // 게임 초기화 
-        roundTime = 0;        
+        roundTime = 0;
+        StartCoroutine(RoundTimerCoroutine());
     }
 
     private void GameOver()
@@ -56,8 +64,9 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            // 여기서 라운드 시간 계속 증가
-            yield return null;
+            yield return new WaitForSeconds(1f);
+            roundTime++;
+            OnRoundTimeChanged?.Invoke();
         }
     }
 }

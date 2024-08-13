@@ -26,6 +26,15 @@ public class ZombieMonster : Monster
     private void GetDirection()
     {
         targetDir = (Target.transform.position - transform.position).normalized;
+        if (targetDir.x < 0)
+        {
+            IsFacingLeft = true;
+        }
+        else if (targetDir.x > 0)
+        {
+            IsFacingLeft = false;
+        }
+        Flip();
     }
 
 

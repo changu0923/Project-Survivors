@@ -69,10 +69,20 @@ public abstract class Monster : MonoBehaviour
     }
 
     #region Animation
-    private void Flip()
+    protected void Flip()
     {
-        // if condition
         spriteRenderer.flipX = isFacingLeft;
     }
+
+    protected void AnimationHit()
+    {
+        animator.SetTrigger("Hit");
+    }
+
+    protected void AnimationDie()
+    {
+        animator.SetTrigger("Die");
+    }
+
     #endregion
 }

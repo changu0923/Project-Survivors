@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 205168336}
   - component: {fileID: 205168334}
   - component: {fileID: 205168337}
+  - component: {fileID: 205168339}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -324,6 +325,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &205168339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205168331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95244d2111d93d4db32ae3f3daa708d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &241700673
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +587,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 635133242}
+  - component: {fileID: 635133243}
   m_Layer: 5
   m_Name: TopBarPanel
   m_TagString: Untagged
@@ -603,6 +617,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &635133243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635133241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd303d4c90d20343bc526dba32bfcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expSlider: {fileID: 1655545542}
+  roundTimeText: {fileID: 1257844152}
 --- !u!1001 &656322408
 PrefabInstance:
   m_ObjectHideFlags: 0
