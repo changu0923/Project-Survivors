@@ -27,8 +27,8 @@ public class ObjectPoolManager : MonoBehaviour
     private Dictionary<string, ObjectPoolData> dataDict = new Dictionary<string, ObjectPoolData>(); 
     private Dictionary<string, Queue<GameObject>> poolDict = new Dictionary<string, Queue<GameObject>>();
 
-    public void CreatePool(string poolName, GameObject prefab, int initSize)
-    {
+    public void CreatePool(string poolName, GameObject prefab, int initSize = 10)
+    {      
         if (poolDict.ContainsKey(poolName) == false)
         {
             ObjectPoolData newData = new ObjectPoolData(poolName, prefab, initSize);
@@ -61,7 +61,7 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
-    public GameObject Instantiate(string poolName)
+    public GameObject Instantiate(string poolName, GameObject prefab)
     {
         if(poolDict.ContainsKey(poolName))
         {
@@ -76,13 +76,14 @@ public class ObjectPoolManager : MonoBehaviour
             else
             {
                 AddCapacity(poolName);
-                return Instantiate(poolName);
+                return Instantiate(poolName, prefab);
             }
         }
         else
         {
-            Debug.LogError($"오브젝트 풀에 {poolName}에 해당하는 큐가 없습니다.");
-            return null;
+            Debug.Log($"오브젝트 풀에 {poolName}에 해당하는 큐가 없습니다.");
+            CreatePool(poolName, prefab);
+            return Instantiate(poolName, prefab);
         }
     }
 
