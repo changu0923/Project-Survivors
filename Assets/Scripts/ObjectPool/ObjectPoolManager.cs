@@ -56,6 +56,7 @@ public class ObjectPoolManager : MonoBehaviour
         for (int i = 0; i < capacity; i++)
         {
             GameObject obj = Instantiate(currentData.Prefab);
+            obj.transform.parent = transform;
             obj.SetActive(false);
             targetQueue.Enqueue(obj);
         }

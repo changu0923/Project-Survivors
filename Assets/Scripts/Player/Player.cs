@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private int currentHP;
     [SerializeField] int maxHP;
     private int currentEXP;
-    private int maxEXP;
+    private int maxEXP = 100;
     private int level = 1;
     private float moveSpeed = 2.0f;
     private float speedMult = 1.0f;
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private bool isDead;
 
     public Action OnPlayerHealthChanged;
+    public Action OnPlayerExpChanged;
 
     public float MoveSpeed { get { return moveSpeed * speedMult; } }
     public float SkillCoolTimeMult { get { return skillCoolTimeMult; } }
@@ -24,6 +25,9 @@ public class Player : MonoBehaviour
 
     public int CurrentHP { get => currentHP; }
     public int MaxHP { get => maxHP; }
+    public int CurrentEXP { get => currentEXP; set => currentEXP = value; }
+    public int MaxEXP { get => maxEXP; set => maxEXP = value; }
+    public int Level { get => level; set => level = value; }
 
     private void Start()
     {
@@ -50,6 +54,30 @@ public class Player : MonoBehaviour
             currentHP = 0;
             isDead = true;
             Die();
+        }
+    }
+
+    public void GainHP(int iValue)
+    {
+
+    }
+
+    public void GainEXP(int iValue)
+    {
+        currentEXP += iValue;
+        if (currentEXP >= maxEXP)
+        {
+            LevelUP();
+        }
+        OnPlayerExpChanged?.Invoke();
+    }
+
+    public void LevelUP()
+    {
+        while (currentEXP >= maxEXP)
+        {
+            currentEXP -= maxEXP;
+            level++;
         }
     }
 
