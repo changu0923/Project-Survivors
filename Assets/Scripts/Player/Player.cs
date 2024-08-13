@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         InitGame();
-        StartCoroutine(TestCoroutine());
     }
 
     private void InitGame()
@@ -58,12 +57,5 @@ public class Player : MonoBehaviour
     {
 
     }
-
-    IEnumerator TestCoroutine()
-    {
-        yield return new WaitForSeconds(3);
-        TakeDamage(10);
-        yield return new WaitForSeconds(3);
-        TakeDamage(20);
-    }
+   
 }

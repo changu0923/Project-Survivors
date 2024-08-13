@@ -40,7 +40,10 @@ public class PlayerMove : MonoBehaviour
     public void Move()
     {
         if (player.isAlive == false)
+        {
+            rb.velocity = Vector2.zero;
             return;
+        }
 
         Flip();
         moveDir = new Vector2(inputX, inputY).normalized;
