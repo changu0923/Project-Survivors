@@ -10,7 +10,7 @@ public abstract class Skill : MonoBehaviour
 
     [Header("스킬 이름")]
     [SerializeField]string skillName;
-    private int skillLevel = 1;
+    [SerializeField]int skillLevel;
     private Coroutine skillCoroutine;
 
     [Header("스킬이 분 당 사용되는 횟수")]
@@ -18,6 +18,7 @@ public abstract class Skill : MonoBehaviour
     private float skillCooltimeMult;
 
     public string SkillName { get => skillName; }
+    public int SkillLevel { get => skillLevel; }
     public Player SetSkillOnwer { set => skillOnwer = value; }
 
     public virtual void Use()
@@ -31,11 +32,6 @@ public abstract class Skill : MonoBehaviour
         {
             skillCoroutine = StartCoroutine(RepeatSkillCoroutine());
         }
-    }
-
-    public void SkillLevelUp()
-    {
-        skillLevel++;
     }
 
     private float CalculateSkillRPM()

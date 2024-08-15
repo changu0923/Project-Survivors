@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expSlider: {fileID: 1655545542}
+  levelText: {fileID: 1894084349}
   roundTimeText: {fileID: 1257844152}
 --- !u!1001 &656322408
 PrefabInstance:
