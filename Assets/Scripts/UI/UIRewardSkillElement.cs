@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class UIRewardSkillElement : MonoBehaviour
 {
-    private Image skillImage;
-    private Text skillText;
-    private Button okButton;
+    [SerializeField] Image skillImage;
+    [SerializeField] Text skillText;
+    [SerializeField] Text skillLevelText;
+    [SerializeField] Button okButton;
     private Skill skill;
 
     private void Awake()
     {
-        skillImage = GetComponent<Image>();
-        skillText = GetComponent<Text>();
-        okButton = GetComponent<Button>();
         okButton.onClick.AddListener(OnOkButtonClicked);
     }
 

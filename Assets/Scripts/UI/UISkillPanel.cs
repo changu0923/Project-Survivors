@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISkillPanel : MonoBehaviour
 {
-    [SerializeField] RectTransform activeSkillPanel;
-    [SerializeField] RectTransform passiveSkillPanel;
+    [SerializeField] HorizontalLayoutGroup activeSkillPanel;
+    [SerializeField] HorizontalLayoutGroup passiveSkillPanel;
     [SerializeField] GameObject skillElement;
 
     private List<UISkillElements> activeSkillList = new List<UISkillElements>();
@@ -21,6 +22,7 @@ public class UISkillPanel : MonoBehaviour
             if (activeSkillList.Count < 6)
             {
                 element.SetImage(skill.SkillSprite);
+                element.transform.parent = activeSkillPanel.transform;
                 activeSkillList.Add(element);
             }
             else
@@ -36,6 +38,7 @@ public class UISkillPanel : MonoBehaviour
             if (passiveSkillList.Count < 6)
             {
                 element.SetImage(skill.SkillSprite);
+                element.transform.parent = passiveSkillPanel.transform;
                 passiveSkillList.Add(element);
             }
             else
