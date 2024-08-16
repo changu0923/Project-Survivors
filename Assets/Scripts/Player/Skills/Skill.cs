@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public abstract class Skill : MonoBehaviour 
 {
@@ -10,16 +7,34 @@ public abstract class Skill : MonoBehaviour
 
     [Header("스킬 이름")]
     [SerializeField]string skillName;
+    protected enum SKILLTYPE
+    {
+        ACTIVE = 0,
+        PASSIVE = 1,
+    }
+
+    [Header("스킬 타입")]
+    [SerializeField] SKILLTYPE skillType;
+
+    [Header("스킬 레벨")]
     [SerializeField]int skillLevel;
     private Coroutine skillCoroutine;
 
+    [Header("스킬 이미지")]
+    [SerializeField] Sprite skillSprite;
+
     [Header("스킬이 분 당 사용되는 횟수")]
     [SerializeField]float skillRPM;
+
     private float skillCooltimeMult;
 
     public string SkillName { get => skillName; }
     public int SkillLevel { get => skillLevel; }
     public Player SetSkillOnwer { set => skillOnwer = value; }
+    public Sprite SkillSprite { get => skillSprite; }
+
+    public string SkillType { get { return skillType.ToString(); } }
+
 
     public virtual void Use()
     {
