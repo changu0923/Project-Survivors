@@ -1,14 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Monster : MonoBehaviour
 {
+    [Header("몬스터 정보")]
     [SerializeField] string monsterName;
     private int currentHP;
     [SerializeField] int maxHP;
     [SerializeField] int damage;
     [SerializeField] float moveSpeed;
+
+    [Header("드랍 아이템 정보")]
+    [SerializeField] List<GameObject> itemList = new List<GameObject>(); 
 
     private bool isDead;
     private bool isFacingLeft;
@@ -43,8 +48,6 @@ public abstract class Monster : MonoBehaviour
 
         int monsterLayer = LayerMask.NameToLayer("Monster");
         gameObject.layer = monsterLayer;
-        Color color = new Color(1, 1, 1, 1);
-        spriteRenderer.color = color;
         currentHP = maxHP;
         isDead = false;
         AnimationInit();
@@ -70,12 +73,30 @@ public abstract class Monster : MonoBehaviour
     protected virtual void Die()     
     {
         rb.velocity = Vector2.zero;
+        DropItem();
         // 1. 죽는 애니메이션 재생하며, 리지드바디를 없애 몸 관통 가능하게 함
         int deadLayer = LayerMask.NameToLayer("Dead");
         gameObject.layer = deadLayer;
         AnimationDie();
         // 2. 애니메이션이 끝난 후 안보이게 하고, 오브젝트 풀에 집어넣음 
         StartCoroutine(RemoveBody());
+    }
+
+    protected virtual void DropItem()
+    {
+        foreach(var item in itemList)
+        {
+            Item currentItem = item.GetComponent<Item>();
+            float currentChance = currentItem.ItemDropChance;
+
+            float magicNumber = Random.Range(0f, 1f);
+            if(magicNumber <= currentChance)
+            {
+                GameObject obj = ObjectPoolManager.Instance.Instantiate(currentItem.ItemName, currentItem.gameObject);
+                obj.transform.position = transform.position;
+                obj.transform.parent = ObjectPoolManager.Instance.transform;
+            }
+        }        
     }
 
     #region Animation

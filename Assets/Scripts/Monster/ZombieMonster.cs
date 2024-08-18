@@ -64,6 +64,11 @@ public class ZombieMonster : Monster
         base.Die();
     }
 
+    protected override void DropItem()
+    {
+        base.DropItem();
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.collider.tag == "Player")
