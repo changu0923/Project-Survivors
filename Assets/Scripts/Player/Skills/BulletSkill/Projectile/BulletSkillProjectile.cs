@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 
 public class BulletSkillProjectile : MonoBehaviour
@@ -50,5 +51,15 @@ public class BulletSkillProjectile : MonoBehaviour
     { 
         yield return new WaitForSeconds(10f);
         ObjectPoolManager.Instance.Destory("BulletSkillProjectile", gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Monster")
+        {
+            Monster currentMob = collision.transform.GetComponent<Monster>();
+            currentMob.TakeDamage(this.damage);
+            ObjectPoolManager.Instance.Destory("BulletSkillProjectile", gameObject);
+        }
     }
 }

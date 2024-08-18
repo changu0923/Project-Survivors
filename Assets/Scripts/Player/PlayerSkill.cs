@@ -54,9 +54,6 @@ public class PlayerSkill : MonoBehaviour
         {            
             if(newSkill.SkillName == newSkillName && newSkill.SkillLevel == 1)
             {
-#if UNITY_EDITOR
-                Debug.Log($"[{newSkill}]을 skillListDict에서 찾았습니다!!");
-#endif
                 GameObject newSkillObj = Instantiate(newSkill.gameObject, transform.position, Quaternion.identity);
                 newSkillObj.transform.parent = skillStorage.transform;
                 newSkillObj.transform.localPosition = skillStorage.transform.localPosition;

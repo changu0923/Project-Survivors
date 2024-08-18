@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Zombie
-  maxHP: 100
+  maxHP: 15
   damage: 1
   moveSpeed: 1
 --- !u!95 &6281675941944717431

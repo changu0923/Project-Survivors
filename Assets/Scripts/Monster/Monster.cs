@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -40,8 +41,13 @@ public abstract class Monster : MonoBehaviour
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         target = GameManager.Instance.Player;
 
+        int monsterLayer = LayerMask.NameToLayer("Monster");
+        gameObject.layer = monsterLayer;
+        Color color = new Color(1, 1, 1, 1);
+        spriteRenderer.color = color;
         currentHP = maxHP;
-        isDead = false;        
+        isDead = false;
+        AnimationInit();
     }
 
     protected virtual void Move()
@@ -49,7 +55,7 @@ public abstract class Monster : MonoBehaviour
         // 플레이어를 향해 이동
     }
 
-    protected virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         if(isDead == true) return;
 
@@ -61,11 +67,15 @@ public abstract class Monster : MonoBehaviour
         }
     }
 
-    protected virtual void Die()
+    protected virtual void Die()     
     {
+        rb.velocity = Vector2.zero;
         // 1. 죽는 애니메이션 재생하며, 리지드바디를 없애 몸 관통 가능하게 함
+        int deadLayer = LayerMask.NameToLayer("Dead");
+        gameObject.layer = deadLayer;
+        AnimationDie();
         // 2. 애니메이션이 끝난 후 안보이게 하고, 오브젝트 풀에 집어넣음 
-        ObjectPoolManager.Instance.Destory(monsterName, this.gameObject);
+        StartCoroutine(RemoveBody());
     }
 
     #region Animation
@@ -81,8 +91,29 @@ public abstract class Monster : MonoBehaviour
 
     protected void AnimationDie()
     {
+        animator.SetBool("isDead", true);
         animator.SetTrigger("Die");
     }
 
+    protected void AnimationInit()
+    {
+        animator.SetBool("isDead", false); 
+        animator.SetTrigger("Init");
+    }
+    
+    protected void AnimationReset()
+    {
+        animator.ResetTrigger("Hit");
+        animator.ResetTrigger("Die");
+        animator.ResetTrigger("Init");
+    }
+
     #endregion
+
+    IEnumerator RemoveBody()
+    {
+        yield return new WaitForSeconds(1.5f);
+        AnimationReset();
+        ObjectPoolManager.Instance.Destory(monsterName, gameObject);
+    }
 }

@@ -8,7 +8,7 @@ public class ZombieMonster : Monster
     private Vector2 targetDir;
     private Coroutine AttackCoolTimeCoroutine;
 
-    private void Start()
+    private void OnEnable()
     {
         Init();
     }
@@ -40,6 +40,8 @@ public class ZombieMonster : Monster
 
     protected override void Move()
     {
+        if (IsDead == true) return;
+
         Rb.velocity = targetDir * MoveSpeed;
     }
 
@@ -52,7 +54,7 @@ public class ZombieMonster : Monster
         StartCoroutine(AttackCoolDown(0.1f));
     }
 
-    protected override void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
     }
