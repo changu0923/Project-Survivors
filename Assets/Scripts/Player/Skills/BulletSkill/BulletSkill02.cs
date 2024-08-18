@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class BulletSkill02 : Skill
-{
+{   
     [Header("스킬 설정")]
     [SerializeField] int damage;
     [SerializeField] float bulletSpeed;

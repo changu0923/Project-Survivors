@@ -7,9 +7,8 @@ public class BulletSkillProjectile : MonoBehaviour
 {
     private int damage;
     private float moveSpeed;
-    private float rotateSpeed = 200f;
 
-    private Transform targetTransform;
+    public Transform targetTransform;
     private Rigidbody2D rb;
 
     Coroutine bulletDestoryCoroutine;
@@ -42,9 +41,9 @@ public class BulletSkillProjectile : MonoBehaviour
     private void Fly()
     {
         Vector2 dir = ((Vector2)targetTransform.position - rb.position).normalized;
-        float rotate = Vector3.Cross(dir, transform.up).z;
-        rb.angularVelocity = -rotate * rotateSpeed;
-        rb.velocity = transform.up * rotateSpeed;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
+        rb.velocity = dir * moveSpeed;
     }
 
     IEnumerator BulletDestoryCoroutine()

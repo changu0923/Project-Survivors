@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed635262f3787ca4f98ee55e337538e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: bulletSpeed
+  skillName: BulletSkill
   skillType: 0
   skillLevel: 0
   skillSprite: {fileID: -205726582, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}

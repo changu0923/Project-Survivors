@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010352058715864768}
   - component: {fileID: 2010352058715864831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 2010352058838445659}
   - component: {fileID: 2010352058838445660}
   - component: {fileID: 2010352058838445657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSkillProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

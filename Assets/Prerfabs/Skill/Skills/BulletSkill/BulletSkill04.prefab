@@ -63,7 +63,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3086960006089046050, guid: d900db1372694084bb40d27b0894bb50, type: 3}
   m_PrefabInstance: {fileID: 5278076571517007948}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-7109341730241609293
+--- !u!114 &-5244476905479253076
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,14 +72,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7199122099851706478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0352017333cd95e47b298d7ece8bbfb7, type: 3}
+  m_Script: {fileID: 11500000, guid: dd14943260f1c5544a4f3fdf443e71df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: BulletSkill
   skillType: 0
   skillLevel: 4
   skillSprite: {fileID: -205726582, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  skillRPM: 35
+  skillRPM: 45
   damage: 21
   bulletSpeed: 18
   bulletPrefab: {fileID: 2010352058838445661, guid: dc5c1dfddf92c034f891aa16d92d39c7, type: 3}

@@ -13,7 +13,7 @@ public class BulletSkill01 : Skill
     private void Awake()
     {
         player = GameManager.Instance.Player;
-        monsterLayer = LayerMask.NameToLayer("Monster");
+        monsterLayer = LayerMask.GetMask("Monster");
     }
 
     public override void Use()
@@ -24,10 +24,9 @@ public class BulletSkill01 : Skill
     private Transform FindMinDistanceMob()
     {
         Vector2 currentPos = player.transform.position;
-
-        Collider2D[] detectedMobs = Physics2D.OverlapCircleAll(currentPos, 10f, monsterLayer);
-
+        Collider2D[] detectedMobs = Physics2D.OverlapCircleAll(currentPos, 10f, monsterLayer);    
         Transform targetMob = null; 
+
         float minDistance = Mathf.Infinity;
 
         foreach (Collider2D mob in detectedMobs)
@@ -36,6 +35,7 @@ public class BulletSkill01 : Skill
 
             if (currentMobDistance < minDistance)
             {
+                minDistance = currentMobDistance;
                 targetMob = mob.transform;
             }
         }
@@ -45,7 +45,10 @@ public class BulletSkill01 : Skill
     
     private void Shoot(Transform target)
     {
+        if (target == null) return;
+
         bullet = ObjectPoolManager.Instance.Instantiate("BulletSkillProjectile", bulletPrefab).GetComponent<BulletSkillProjectile>();
+        bullet.transform.position = player.transform.position;
         bullet.Shoot(damage, bulletSpeed, target);
     }
 }

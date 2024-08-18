@@ -41,8 +41,14 @@ public abstract class Skill : MonoBehaviour
 
     }
 
+    protected void InitSkill()
+    {
+        skillOnwer = GameManager.Instance.Player;
+    }
+
     public void StartSkill()
     {
+        InitSkill();
         if (skillCoroutine == null)
         {
             skillCoroutine = StartCoroutine(RepeatSkillCoroutine());

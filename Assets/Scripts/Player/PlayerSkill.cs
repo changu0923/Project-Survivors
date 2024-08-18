@@ -8,9 +8,12 @@ public class PlayerSkill : MonoBehaviour
     private Player player;
 
     // 스킬 관리
-    [SerializeField] List<Skill> skillList = new List<Skill>(); 
+    [SerializeField] List<Skill> skillList = new List<Skill>();
+    [SerializeField] Transform skillStorage;
     private Dictionary<string, Skill> skillListDict = new Dictionary<string, Skill>();
-    private Dictionary<string, Skill> currentSkillDict = new Dictionary<string, Skill>();   
+    private Dictionary<string, Skill> currentSkillDict = new Dictionary<string, Skill>();
+
+    [SerializeField] Skill testSkill;
 
     private void Awake()
     {
@@ -20,7 +23,7 @@ public class PlayerSkill : MonoBehaviour
 
     private void Start()
     {
-
+        AddSkill(testSkill);
     }
 
     private void InitSkillDict()
@@ -47,11 +50,21 @@ public class PlayerSkill : MonoBehaviour
         }
 
         // 새로운 스킬이면 skillListDict에서 가져오기
-        foreach (Skill newSkill in currentSkillDict.Values)
+        foreach (Skill newSkill in skillListDict.Values)
         {            
             if(newSkill.SkillName == newSkillName && newSkill.SkillLevel == 1)
             {
-                currentSkillDict.Add(newSkill.SkillName, newSkill);
+#if UNITY_EDITOR
+                Debug.Log($"[{newSkill}]을 skillListDict에서 찾았습니다!!");
+#endif
+                GameObject newSkillObj = Instantiate(newSkill.gameObject, transform.position, Quaternion.identity);
+                newSkillObj.transform.parent = skillStorage.transform;
+                newSkillObj.transform.localPosition = skillStorage.transform.localPosition;
+
+                Skill newSkillObjInstance = newSkillObj.GetComponent<Skill>();
+
+                currentSkillDict.Add(newSkillObjInstance.SkillName, newSkillObjInstance);
+                newSkillObjInstance.StartSkill();
             }
         }
     }

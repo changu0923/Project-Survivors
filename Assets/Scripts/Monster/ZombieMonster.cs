@@ -73,7 +73,6 @@ public class ZombieMonster : Monster
     IEnumerator AttackCoolDown(float t_wait)
     {
         yield return new WaitForSeconds(t_wait);
-        Debug.Log("AttackCoolDown Called");
         AttackFlag = false;
     }
 }
