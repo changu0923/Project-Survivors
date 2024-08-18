@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour
         spawnedMob = ObjectPoolManager.Instance.Instantiate(spawnTarget, monster.gameObject);
         spawnedMob.transform.parent = ObjectPoolManager.Instance.transform;
 
-        Vector2 getRandomPos = Random.insideUnitCircle.normalized * 5f;
+        Vector2 getRandomPos = Random.insideUnitCircle.normalized * 10f;
         Vector2 spawnPos = new Vector2(player.transform.position.x + getRandomPos.x, player.transform.position.y + getRandomPos.y);
         spawnedMob.transform.position = spawnPos;
     }
