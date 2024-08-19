@@ -10,10 +10,13 @@ public class UIRewardSkillElement : MonoBehaviour
     [SerializeField] Text skillLevelText;
     [SerializeField] Button okButton;
     private Skill skill;
+    private UILevelUpRewardPanel levelUpRewardPanel;
 
-    private void Awake()
+    private void OnEnable()
     {
+        okButton.onClick.RemoveAllListeners();
         okButton.onClick.AddListener(OnOkButtonClicked);
+        levelUpRewardPanel = GetComponentInParent<UILevelUpRewardPanel>();
     }
 
     public void SetRewardElement(Skill p_skill)
@@ -28,6 +31,6 @@ public class UIRewardSkillElement : MonoBehaviour
         Player player = GameManager.Instance.Player;
         PlayerSkill targetPlayer = player.GetComponent<PlayerSkill>();  
         targetPlayer.AddSkill(skill);
+        levelUpRewardPanel.gameObject.SetActive(false);
     }
-
 }

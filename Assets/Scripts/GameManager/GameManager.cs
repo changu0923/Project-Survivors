@@ -27,13 +27,18 @@ public class GameManager : MonoBehaviour
 
     private bool isWin;
     private int roundTime;
+    private int killCount;
+    private bool isPaused;
 
     [SerializeField] Player player;
+    [SerializeField] UIManager uiManager;
 
     public Player Player { get => player; }
     public int RoundTime { get => roundTime; }
+    public int KillCount { get => killCount; }
 
     public Action OnRoundTimeChanged;
+    public Action OnKillCountChanged;
 
     private void Start()
     {
@@ -44,7 +49,27 @@ public class GameManager : MonoBehaviour
     {
         // 게임 초기화 
         roundTime = 0;
+        killCount = 0;
         StartCoroutine(RoundTimerCoroutine());
+    }
+
+    public void PauseGame()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused == true)
+        {
+            Time.timeScale = 0f;
+        }
+        else if (isWin == false)
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void PlayerLevelUpReward(int levelUpAmount)
+    {
+        uiManager.OnLevelUpRewardPopUP(levelUpAmount);
     }
 
     private void GameOver()
@@ -59,6 +84,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddKillCount()
+    {
+        killCount++;
+        OnKillCountChanged?.Invoke();
+    }
 
     IEnumerator RoundTimerCoroutine()
     {

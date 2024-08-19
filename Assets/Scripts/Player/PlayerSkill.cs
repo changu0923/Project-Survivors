@@ -9,6 +9,7 @@ public class PlayerSkill : MonoBehaviour
 
     // 스킬 관리
     [SerializeField] List<Skill> skillList = new List<Skill>();
+    [SerializeField] List<Skill> baseSkillList = new List<Skill>();
     [SerializeField] Transform skillStorage;
     private Dictionary<string, Skill> skillListDict = new Dictionary<string, Skill>();
     private Dictionary<string, Skill> currentSkillDict = new Dictionary<string, Skill>();
@@ -33,6 +34,21 @@ public class PlayerSkill : MonoBehaviour
             string skillName = skill.GetType().Name;
             skillListDict.Add(skillName, skill);
         }    
+    }
+
+    public Skill[] GetRandomBaseSkill()
+    {
+        // TODO : 스킬 추가후 개선하기
+        int maxRange = baseSkillList.Count;
+        Skill[] randomSkillArray = new Skill[3];
+
+        for (int i = 0; i<3; i++)
+        {
+            int randomIndex = Random.Range(0, maxRange);
+            randomSkillArray[i] = baseSkillList[randomIndex];
+        }
+
+        return randomSkillArray;
     }
 
     public void AddSkill(Skill skill)

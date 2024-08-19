@@ -391,6 +391,7 @@ MonoBehaviour:
   - {fileID: 8745825646571372564, guid: 675722c0959aa534089ff0779c18fac9, type: 3}
   - {fileID: -5244476905479253076, guid: 0f4d8af6b62dc9d4e82518eed4c72930, type: 3}
   - {fileID: -4706672212204746757, guid: 0b1e01658f5c9ff40af2644f50455956, type: 3}
+  baseSkillList: []
   skillStorage: {fileID: 2030752834}
   testSkill: {fileID: 1089548047}
 --- !u!70 &205168338
@@ -527,7 +528,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &386884702
 GameObject:
@@ -990,7 +991,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801529152
 GameObject:
@@ -1098,6 +1099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 205168336}
+  uiManager: {fileID: 854603421}
 --- !u!4 &839684729
 Transform:
   m_ObjectHideFlags: 0
@@ -1111,7 +1113,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854603416
 GameObject:
@@ -1125,6 +1127,7 @@ GameObject:
   - component: {fileID: 854603419}
   - component: {fileID: 854603418}
   - component: {fileID: 854603417}
+  - component: {fileID: 854603421}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -1207,13 +1210,26 @@ RectTransform:
   m_Children:
   - {fileID: 241700674}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &854603421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854603416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf7d96a855192b489fa3481280870f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uILevelUpRewardPanel: {fileID: 1479595202}
 --- !u!1 &860297379
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,6 +3151,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907769042}
   m_CullTransparentMesh: 1
+--- !u!1 &1948026385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948026386}
+  m_Layer: 0
+  m_Name: ========== ObjectPool ==========
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948026386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948026385}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956738644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2030752834}
   m_Layer: 0
-  m_Name: ===== Current Player Skill =====
+  m_Name: CurrentPlayerSkillHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3227,7 +3274,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046325375
 GameObject:
@@ -3649,7 +3696,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2126140780
 MonoBehaviour:

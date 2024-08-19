@@ -74,16 +74,18 @@ public class Player : MonoBehaviour
 
     public void LevelUP()
     {
+        int levelupCount = 0;
         while (currentEXP >= maxEXP)
         {
             currentEXP -= maxEXP;
             level++;
+            levelupCount++;
         }
+        GameManager.Instance.PlayerLevelUpReward(levelupCount);
     }
 
     private void Die()
     {
 
-    }
-   
+    }   
 }

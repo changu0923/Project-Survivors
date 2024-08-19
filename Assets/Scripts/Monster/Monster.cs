@@ -74,6 +74,7 @@ public abstract class Monster : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         DropItem();
+        GameManager.Instance.AddKillCount();
         // 1. 죽는 애니메이션 재생하며, 리지드바디를 없애 몸 관통 가능하게 함
         int deadLayer = LayerMask.NameToLayer("Dead");
         gameObject.layer = deadLayer;
