@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +10,16 @@ public class UITopBarPanel : MonoBehaviour
     [SerializeField] Slider expSlider;
     [SerializeField] Text levelText;
     [SerializeField] Text roundTimeText;
+    [SerializeField] Text killCountText;
+
+    private StringBuilder sb = new StringBuilder();
+    private int currentKillCount = 0;
 
     private void Awake()
     {
         player = GameManager.Instance.Player;
         GameManager.Instance.OnRoundTimeChanged += UpdateRoundTime;
+        GameManager.Instance.OnKillCountChanged += UpdateKillCount;
         player.OnPlayerExpChanged += UpdateEXPSlider;
     }
 
@@ -30,6 +36,14 @@ public class UITopBarPanel : MonoBehaviour
         expSlider.value = ((float)player.CurrentEXP / player.MaxEXP);
         string levelString = "LV " + player.Level.ToString();
         levelText.text = levelString;
+    }
+
+    private void UpdateKillCount()
+    {
+        currentKillCount = GameManager.Instance.KillCount;
+        sb.Clear();
+        sb.Append(currentKillCount.ToString());
+        killCountText.text = sb.ToString();
     }
 
 }
