@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] UILevelUpRewardPanel uILevelUpRewardPanel;
 
+    public UILevelUpRewardPanel UILevelUpRewardPanel { get => uILevelUpRewardPanel; }
+
     public void OnLevelUpRewardPopUP(int levelAmount)
     {
         StartCoroutine(LevelUPRewardCoroutine(levelAmount));

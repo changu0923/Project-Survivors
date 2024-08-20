@@ -17,7 +17,14 @@ public class UILevelUpRewardPanel : MonoBehaviour
 
     private void GetRandomSkill()
     {
-        if ((currentElements.Count > 0)) currentElements.Clear();
+        if ((currentElements.Count > 0))
+        {
+            for(int i = 0; i < currentElements.Count; i++) 
+            {
+                Destroy(currentElements[i].gameObject);
+            }
+            currentElements.Clear();
+        }
 
         PlayerSkill skill = GameManager.Instance.Player.GetComponent<PlayerSkill>();
         Skill[] getRandomSkills = skill.GetRandomBaseSkill();
@@ -26,7 +33,7 @@ public class UILevelUpRewardPanel : MonoBehaviour
         {
             UIRewardSkillElement element = Instantiate(rewardElementPrefab).GetComponent<UIRewardSkillElement>();
             element.SetRewardElement(skillElement);
-            element.transform.parent = skillHolder.transform;
+            element.transform.SetParent(skillHolder.transform);
             currentElements.Add(element);
         }
     }

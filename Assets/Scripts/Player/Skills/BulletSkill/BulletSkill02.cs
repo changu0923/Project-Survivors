@@ -19,7 +19,7 @@ public class BulletSkill02 : Skill
 
     public override void Use()
     {
-        MultiShotCoroutine(2, 0.05f, FindMinDistanceMob());
+        StartCoroutine(MultiShotCoroutine(2, 0.05f, FindMinDistanceMob()));
     }
 
     private Transform FindMinDistanceMob()
@@ -55,6 +55,7 @@ public class BulletSkill02 : Skill
 
     IEnumerator MultiShotCoroutine(int rounds, float t_delay, Transform target)
     {
+        Debug.Log("Skill Called : BulletSkill02");
         for (int i = 0; i < rounds; i++)
         {
             Shoot(target);

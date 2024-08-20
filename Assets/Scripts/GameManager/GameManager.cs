@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public Player Player { get => player; }
     public int RoundTime { get => roundTime; }
     public int KillCount { get => killCount; }
+    public UIManager UiManager { get => uiManager; }
 
     public Action OnRoundTimeChanged;
     public Action OnKillCountChanged;

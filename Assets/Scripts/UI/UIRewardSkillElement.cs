@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ public class UIRewardSkillElement : MonoBehaviour
     {
         okButton.onClick.RemoveAllListeners();
         okButton.onClick.AddListener(OnOkButtonClicked);
-        levelUpRewardPanel = GetComponentInParent<UILevelUpRewardPanel>();
+        levelUpRewardPanel = GameManager.Instance.UiManager.UILevelUpRewardPanel.GetComponent<UILevelUpRewardPanel>();
     }
 
     public void SetRewardElement(Skill p_skill)
@@ -24,6 +25,7 @@ public class UIRewardSkillElement : MonoBehaviour
         skill = p_skill;
         skillImage.sprite = skill.SkillSprite;
         skillText.text = skill.SkillName;
+        // TODO : SkillLevel
     }
 
     private void OnOkButtonClicked()

@@ -391,7 +391,8 @@ MonoBehaviour:
   - {fileID: 8745825646571372564, guid: 675722c0959aa534089ff0779c18fac9, type: 3}
   - {fileID: -5244476905479253076, guid: 0f4d8af6b62dc9d4e82518eed4c72930, type: 3}
   - {fileID: -4706672212204746757, guid: 0b1e01658f5c9ff40af2644f50455956, type: 3}
-  baseSkillList: []
+  baseSkillList:
+  - {fileID: -6203339847786091811, guid: b5de708260415a042b23d408fa190648, type: 3}
   skillStorage: {fileID: 2030752834}
   testSkill: {fileID: 1089548047}
 --- !u!70 &205168338

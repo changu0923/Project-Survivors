@@ -89,10 +89,22 @@ public class PlayerSkill : MonoBehaviour
 
         foreach(Skill findSkill in skillListDict.Values)
         {
-            if(findSkill.SkillName == targetSkillName && findSkill.SkillLevel == targetSkillLevel)
+            if (findSkill.SkillName == targetSkillName && findSkill.SkillLevel == targetSkillLevel)
             {
+                targetSkill.StopSkill();
+
                 currentSkillDict[targetSkill.SkillName] = findSkill;
+                
+                GameObject newSkillObj = Instantiate(currentSkillDict[targetSkill.SkillName].gameObject, transform.position, Quaternion.identity);
+                newSkillObj.transform.parent = skillStorage.transform;
+                newSkillObj.transform.localPosition = skillStorage.transform.localPosition;
+                Skill newSkillObjInstance = newSkillObj.GetComponent<Skill>();
+                newSkillObjInstance.StartSkill();
+                return;
             }
         }
+
+        // TODO : 예외처리
+        Debug.Log("스킬 레벨이 만렙입니다.");
     }
 }
