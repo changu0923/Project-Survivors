@@ -19,7 +19,7 @@ public class BulletSkill04 : Skill
 
     public override void Use()
     {
-        MultiShotCoroutine(4, 0.05f, FindMinDistanceMob());
+        StartCoroutine(MultiShotCoroutine(4, 0.05f, FindMinDistanceMob()));
     }
 
     private Transform FindMinDistanceMob()

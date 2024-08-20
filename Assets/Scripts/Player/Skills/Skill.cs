@@ -52,14 +52,13 @@ public abstract class Skill : MonoBehaviour
         if (skillCoroutine == null)
         {
             skillCoroutine = StartCoroutine(RepeatSkillCoroutine());
+            Debug.Log($"StartCorutine : {skillName} level {skillLevel}");
         }
         Debug.Log($"StartSkill : {skillName} level {skillLevel}");
     }
 
     public void StopSkill()
     {
-        StopCoroutine(skillCoroutine);
-        Debug.Log($"StopSkill : {skillName} level {skillLevel}");
         Destroy(gameObject);
     }
         
@@ -75,7 +74,6 @@ public abstract class Skill : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Skill.cs Shoot Coroutine Called");
             Use();
             yield return new WaitForSeconds(CalculateSkillRPM());
         }
