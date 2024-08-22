@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3086960006089046048}
   - component: {fileID: -6203339847786091811}
   m_Layer: 0
-  m_Name: BulletSkillBase
+  m_Name: BulletSkill00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

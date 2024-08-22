@@ -49,6 +49,7 @@ public abstract class Skill : MonoBehaviour
     public void StartSkill()
     {
         InitSkill();
+
         if (skillCoroutine == null)
         {
             skillCoroutine = StartCoroutine(RepeatSkillCoroutine());
@@ -59,7 +60,8 @@ public abstract class Skill : MonoBehaviour
 
     public void StopSkill()
     {
-        Destroy(gameObject);
+        Debug.Log($"Trying To StopSkill() {skillName}");
+        gameObject.SetActive(false);
     }
         
 
