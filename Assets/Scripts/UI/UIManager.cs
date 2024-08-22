@@ -15,14 +15,22 @@ public class UIManager : MonoBehaviour
 
     IEnumerator LevelUPRewardCoroutine(int levelAmount)
     {
+        PlayerSkill playerSkill = GameManager.Instance.Player.GetComponent<PlayerSkill>();
         int count = 0;
         while (count < levelAmount)
         {
-            GameManager.Instance.PauseGame();
-            uILevelUpRewardPanel.gameObject.SetActive(true);
-            yield return new WaitUntil(() => !uILevelUpRewardPanel.gameObject.activeSelf);
-            GameManager.Instance.PauseGame();
-            count++;
+            if (playerSkill.CheckSkillLevelUpAble() == false)
+            {
+                count++;
+            }
+            else
+            {
+                GameManager.Instance.PauseGame();
+                uILevelUpRewardPanel.gameObject.SetActive(true);
+                yield return new WaitUntil(() => !uILevelUpRewardPanel.gameObject.activeSelf);
+                GameManager.Instance.PauseGame();
+                count++;
+            }
         }
     }
 }

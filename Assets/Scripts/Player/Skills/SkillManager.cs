@@ -15,7 +15,6 @@ public class SkillManager : MonoBehaviour
         InitSkillDict();
     }
 
-    // 게임이 시작되면 모든 스킬을 skillDictionary에 추가합니다. 레벨이 0인 스킬은 기본 스킬로, 따로 리스트에 넣어 관리합니다.
     private void InitSkillDict()
     {
         foreach (Skill skill in skillList)

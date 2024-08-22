@@ -1,12 +1,13 @@
 using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
     private Player player;
-
+    private bool isSkillLevelUpAble = true;
     // 스킬 관리
     [SerializeField] SkillManager skillManager;
     private Dictionary<string, Skill> playerSkillDict = new Dictionary<string, Skill>();
@@ -53,5 +54,24 @@ public class PlayerSkill : MonoBehaviour
             playerSkillDict.Add(newSkillName, newSkill);
             playerSkillDict[newSkillName].StartSkill();
         }
-    }    
+    }
+    
+    public bool CheckSkillLevelUpAble()
+    {
+        const int maxLevel = 5;
+        foreach (var skills in playerSkillDict)
+        {
+            Skill skill = skills.Value;
+            if(skill.SkillLevel == maxLevel)
+            {
+                isSkillLevelUpAble = false;
+            }
+            else
+            {
+                isSkillLevelUpAble = true;
+            }
+        }
+
+        return isSkillLevelUpAble;
+    }
 }
