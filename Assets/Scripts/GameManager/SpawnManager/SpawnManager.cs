@@ -7,6 +7,9 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField]List<Monster> spawnList = new List<Monster>();
 
+    [Header("스폰 큐 목록")]
+    [SerializeField] private List<SpawnQueue> spawnQueueList = new List<SpawnQueue>();
+
     Player player;
 
     private void Awake()
