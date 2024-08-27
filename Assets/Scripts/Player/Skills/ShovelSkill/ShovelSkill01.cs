@@ -12,7 +12,6 @@ public class ShovelSkill01 : Skill
     [SerializeField] float scaleY;
 
     private Player player;
-    private Rigidbody2D rb;
 
     private Coroutine skillCoroutine;
     private bool isActive = false;
@@ -21,7 +20,6 @@ public class ShovelSkill01 : Skill
     {
         transform.localScale = new Vector3(scaleX, scaleY, 1f);
         player = GameManager.Instance.Player;
-        rb = GetComponent<Rigidbody2D>();    
     }
 
     public override void Use()
@@ -33,15 +31,6 @@ public class ShovelSkill01 : Skill
             isActive = true; 
             skillCoroutine = StartCoroutine(ShovelSpinCoroutine());
 
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Monster"))
-        {
-            Monster monster = other.gameObject.GetComponent<Monster>();
-            monster.TakeDamage(weaponDamage);
         }
     }
 

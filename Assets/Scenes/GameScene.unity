@@ -2163,7 +2163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 218, y: 0}
   m_SizeDelta: {x: 0, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1371901350
@@ -3451,11 +3451,11 @@ MonoBehaviour:
   - {fileID: -5244476905479253076, guid: 0f4d8af6b62dc9d4e82518eed4c72930, type: 3}
   - {fileID: -4706672212204746757, guid: 0b1e01658f5c9ff40af2644f50455956, type: 3}
   - {fileID: 2723749988152717111, guid: 598d82250cb677940aad49d823691ccd, type: 3}
-  - {fileID: 7550765513029844342, guid: 1cc9f3267574f0a4d891193fb7d3ec8d, type: 3}
-  - {fileID: 5389321368960918450, guid: 0de5ad6114a12b54db485f611315c520, type: 3}
-  - {fileID: -5760148319331720273, guid: d04f71106a08a2b4e953b273c5e774e6, type: 3}
-  - {fileID: 2945584911649183794, guid: 23cbc43bb5318904c8ea967574d11bcf, type: 3}
-  - {fileID: -2322056134070160743, guid: 749b61d562f77c2479189c3109636bf4, type: 3}
+  - {fileID: 3850750069116613441, guid: 17872efa70076494b8dfe663b456dc1a, type: 3}
+  - {fileID: 1376030435407033415, guid: dbdecd207adcbcb4dbf64dd5c89b25c2, type: 3}
+  - {fileID: 1011659444748634674, guid: 39ab49b9c2933674da85083bccc461d2, type: 3}
+  - {fileID: -651631376741127364, guid: 3c7994773e2c23941bdd11f271dc0749, type: 3}
+  - {fileID: 9203572789721348074, guid: 8d38d12ff49a17a4eb845ef67c465b88, type: 3}
 --- !u!1 &2046325375
 GameObject:
   m_ObjectHideFlags: 0

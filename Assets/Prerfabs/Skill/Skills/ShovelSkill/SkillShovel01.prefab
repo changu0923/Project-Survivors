@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8956848046530787570
+--- !u!1001 &1047767086116335511
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -55,21 +55,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillShovel01
       objectReference: {fileID: 0}
+    - target: {fileID: 5002573551310118745, guid: 598d82250cb677940aad49d823691ccd, type: 3}
+      propertyPath: shovelSkill
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2723749988152717111, guid: 598d82250cb677940aad49d823691ccd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 598d82250cb677940aad49d823691ccd, type: 3}
---- !u!1 &6449623029026609089 stripped
+--- !u!1 &3118424656334176420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2723749988152717107, guid: 598d82250cb677940aad49d823691ccd, type: 3}
-  m_PrefabInstance: {fileID: 8956848046530787570}
+  m_PrefabInstance: {fileID: 1047767086116335511}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7550765513029844342
+--- !u!114 &3850750069116613441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6449623029026609089}
+  m_GameObject: {fileID: 3118424656334176420}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fb04eac8244ab41a0bc06eefe814e7, type: 3}
@@ -82,6 +86,6 @@ MonoBehaviour:
   skillRPM: 1
   weaponDamage: 34
   weaponRPM: 20
-  weaponPrefab: {fileID: 6449623029026609089}
+  weaponPrefab: {fileID: 3118424656334176420}
   scaleX: 1.5
   scaleY: 1.5

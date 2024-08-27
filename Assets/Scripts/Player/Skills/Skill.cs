@@ -26,6 +26,8 @@ public abstract class Skill : MonoBehaviour
     [Header("스킬이 분 당 사용되는 횟수")]
     [SerializeField]float skillRPM;
 
+    private int skillDamage;
+
     private float skillCooltimeMult;
 
     public string SkillName { get => skillName; }
@@ -35,6 +37,7 @@ public abstract class Skill : MonoBehaviour
 
     public string SkillType { get { return skillType.ToString(); } }
 
+    public int SkillDamage { get => skillDamage; set => skillDamage = value; }
 
     public virtual void Use()
     {

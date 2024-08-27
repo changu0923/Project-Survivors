@@ -12,36 +12,24 @@ public class ShovelSkill04 : Skill
     [SerializeField] float scaleY;
 
     private Player player;
-    private Rigidbody2D rb;
 
     private Coroutine skillCoroutine;
     private bool isActive;
-
     private void Awake()
     {
         transform.localScale = new Vector3(scaleX, scaleY, 1f);
         player = GameManager.Instance.Player;
-        rb = GetComponent<Rigidbody2D>();    
-        transform.SetParent(player.transform);
-        transform.localPosition = Vector3.zero; 
-
     }
 
     public override void Use()
     {
         if (!isActive)
         {
+            transform.SetParent(player.transform);
+            transform.localPosition = Vector3.zero;
             isActive = true;
             skillCoroutine = StartCoroutine(ShovelSpinCoroutine());
-        }
-    }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Monster"))
-        {
-            Monster monster = other.gameObject.GetComponent<Monster>();
-            monster.TakeDamage(weaponDamage);
         }
     }
 
@@ -50,10 +38,10 @@ public class ShovelSkill04 : Skill
         float rotateSpeed = weaponRPM / 60f;
         float rotateDegree = rotateSpeed * 360f;
 
-        while (isActive)
+        while (isActive == true)
         {
             float rotateValue = rotateDegree * Time.deltaTime;
-            rb.MoveRotation(rb.rotation * rotateValue);
+            transform.Rotate(0, 0, -rotateValue);
             yield return null;
         }
     }
