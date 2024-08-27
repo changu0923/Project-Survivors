@@ -11,14 +11,17 @@ public class PlayerMove : MonoBehaviour
     private float inputY;
     private bool isFacingLeft;
     private Vector2 moveDir;
+    private bool isMoving;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     private void Awake()
     {
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>(); 
+        animator = GetComponent<Animator>();
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
@@ -36,6 +39,14 @@ public class PlayerMove : MonoBehaviour
     {
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
+        if(inputX == 0f && inputY == 0f )
+        {
+            isMoving = false; 
+            AnimationMove();
+            return; 
+        }
+        isMoving = true;
+        AnimationMove();
     }
 
     public void Move()
@@ -63,6 +74,11 @@ public class PlayerMove : MonoBehaviour
             isFacingLeft = true;
         }
         spriteRenderer.flipX = isFacingLeft;
+    }
+
+    private void AnimationMove()
+    {
+        animator.SetBool("Idle", !isMoving);
     }
 
     #endregion

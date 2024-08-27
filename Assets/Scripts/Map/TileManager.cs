@@ -5,23 +5,14 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
-
     public Vector2 tileSize = new(3, 3); 
-
     public Transform tileParent;
-
     public int generateCellSize = 3; 
-
-    public int borderDistance = 2; 
-                              
+    public int borderDistance = 2;                               
     public int destroyDistance = 5; 
-
     public Transform playerTransform;
-
     public List<Vector2Int> tiledCell;
-
     public List<GameObject> tiledObjects; 
-
     Vector2Int[] directionCell;
 
     private void Start()
