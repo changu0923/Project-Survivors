@@ -19,18 +19,11 @@ public class UIManager : MonoBehaviour
         int count = 0;
         while (count < levelAmount)
         {
-            if (playerSkill.CheckSkillLevelUpAble() == false)
-            {
-                count++;
-            }
-            else
-            {
-                GameManager.Instance.PauseGame();
-                uILevelUpRewardPanel.gameObject.SetActive(true);
-                yield return new WaitUntil(() => !uILevelUpRewardPanel.gameObject.activeSelf);
-                GameManager.Instance.PauseGame();
-                count++;
-            }
+            GameManager.Instance.PauseGame();
+            uILevelUpRewardPanel.gameObject.SetActive(true);
+            yield return new WaitUntil(() => !uILevelUpRewardPanel.gameObject.activeSelf);
+            GameManager.Instance.PauseGame();
+            count++;
         }
     }
 }

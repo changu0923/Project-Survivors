@@ -39,7 +39,6 @@ public class BulletSkill00 : Skill
                 targetMob = mob.transform;
             }
         }
-
         return targetMob;
     }
     

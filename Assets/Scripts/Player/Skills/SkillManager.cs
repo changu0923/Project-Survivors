@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -27,18 +28,51 @@ public class SkillManager : MonoBehaviour
             }
         }
     }
-    public Skill[] GetRandomBaseSkill()
+
+    private List<Skill> GetPlayerCurrentSkillList()
     {
-        // TODO : 스킬 추가후 개선하기
-        int maxRange = baseSkillList.Count;
+        PlayerSkill playerSkill = GameManager.Instance.Player.GetComponent<PlayerSkill>();
+        List<Skill> availableSkillListList = playerSkill.GetLevelupAbleSkillList();
+
+        HashSet<string> availableSkillName = new HashSet<string>();
+        foreach (Skill skill in availableSkillListList)
+        {
+            availableSkillName.Add(skill.SkillName);
+        }
+
+        List<Skill> resultList = new List<Skill>();
+        foreach (Skill skill in baseSkillList)
+        {
+            if(availableSkillName.Contains(skill.SkillName))
+            {
+                resultList.Add(skill);
+            }
+        }
+
+        return resultList;
+    }
+    
+    public Skill[] GetRandomBaseSkill()
+    {        
+        List<Skill> currentSkillList = GetPlayerCurrentSkillList();
+        int maxRange = currentSkillList.Count;
         Skill[] randomSkillArray = new Skill[3];
+        HashSet<int> usedIndex = new HashSet<int>();
 
         for (int i = 0; i < 3; i++)
         {
-            int randomIndex = Random.Range(0, maxRange);
-            randomSkillArray[i] = baseSkillList[randomIndex];
-        }
+            if (usedIndex.Count >= maxRange)
+                break;
 
+            int randomIndex;
+            do
+            {
+                randomIndex = Random.Range(0, maxRange);
+            } while (usedIndex.Contains(randomIndex));
+
+            randomSkillArray[i] = currentSkillList[randomIndex];
+            usedIndex.Add(randomIndex); 
+        }
         return randomSkillArray;
     }
 

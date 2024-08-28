@@ -25,7 +25,7 @@ public class UIRewardSkillElement : MonoBehaviour
         skill = p_skill;
         skillImage.sprite = skill.SkillSprite;
         skillText.text = skill.SkillName;
-        // TODO : SkillLevel
+        //skillLevelText.text = skill.GetSkillLevel().ToString();
     }
 
     private void OnOkButtonClicked()

@@ -12,7 +12,7 @@ public class UISkillPanel : MonoBehaviour
     private List<UISkillElements> activeSkillList = new List<UISkillElements>();
     private List<UISkillElements> passiveSkillList = new List<UISkillElements>();
 
-    public void AddSkill(Skill skill)
+    public void AddSkillIcon(Skill skill)
     {
         UISkillElements element = Instantiate(skillElement).GetComponent<UISkillElements>();
         string currentSkillType = skill.SkillType;

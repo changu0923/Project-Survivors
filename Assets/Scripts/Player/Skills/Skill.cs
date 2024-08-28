@@ -63,7 +63,12 @@ public abstract class Skill : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-        
+
+    public int GetSkillLevel()
+    {
+        PlayerSkill playerSkill = skillOnwer.GetComponent<PlayerSkill>();   
+        return playerSkill.GetSkillLevel(this);
+    }
 
     private float CalculateSkillRPM()
     {

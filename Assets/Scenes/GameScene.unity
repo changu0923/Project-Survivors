@@ -1114,6 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80aef51b4210a4c42b08d72a4aa4a7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundEndTime: 300
   player: {fileID: 205168336}
   uiManager: {fileID: 854603421}
 --- !u!4 &839684729
@@ -2163,7 +2164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 218, y: 0}
   m_SizeDelta: {x: 0, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1371901350
@@ -3890,14 +3891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8f11779c4530346bd18c018ede2b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnList:
-  - {fileID: 4121058351756717514, guid: 0d954ed38a5893546a6435099c9a4c95, type: 3}
   spawnQueueList:
-  - monsterPrefab: {fileID: 0}
-    startTime: 0
-    spawnRate: 0
-    spawnMobCount: 0
-  - monsterPrefab: {fileID: 0}
-    startTime: 0
-    spawnRate: 0
-    spawnMobCount: 0
+  - monsterPrefab: {fileID: 4121058351756717515, guid: 0d954ed38a5893546a6435099c9a4c95, type: 3}
+    startTime: 1
+    endTime: 5
+    spawnRate: 0.25
+    spawnMobCount: 5

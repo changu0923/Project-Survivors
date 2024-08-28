@@ -1,46 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField]List<Monster> spawnList = new List<Monster>();
-
     [Header("스폰 큐 목록")]
     [SerializeField] private List<SpawnQueue> spawnQueueList = new List<SpawnQueue>();
 
-    Player player;
+    private Dictionary<int, SpawnQueue> startSpawnDict = new Dictionary<int, SpawnQueue>();
+    private Dictionary<int, SpawnQueue> endSpawnDict = new Dictionary<int, SpawnQueue>();   
+    private Dictionary<int, Coroutine> activeSpawnerDict = new Dictionary<int, Coroutine>();    
+
+    private int roundEndTime = 0;
+    private int currentTime = 0;
 
     private void Awake()
     {
-        player = GameManager.Instance.Player;
-    }
-
-    private void Start()
-    {
-        //this is testcode
-        StartCoroutine(MobSpawner(3f));
-    }
-
-    public void SpawnMonster(Monster monster)
-    {
-        GameObject spawnedMob;
-        string spawnTarget = monster.MonsterName;
-        spawnedMob = ObjectPoolManager.Instance.Instantiate(spawnTarget, monster.gameObject);
-        spawnedMob.transform.parent = ObjectPoolManager.Instance.transform;
-
-        Vector2 getRandomPos = Random.insideUnitCircle.normalized * 10f;
-        Vector2 spawnPos = new Vector2(player.transform.position.x + getRandomPos.x, player.transform.position.y + getRandomPos.y);
-        spawnedMob.transform.position = spawnPos;
-    }
-
-    IEnumerator MobSpawner(float t_spawn)
-    {
-        while (true)
+        GameManager.Instance.OnRoundTimeChanged += CheckRoundTime;
+        roundEndTime = GameManager.Instance.RoundEndTime;
+        foreach (var queue in spawnQueueList)
         {
-            yield return new WaitForSeconds(t_spawn);
-            SpawnMonster(spawnList[0]);
+            startSpawnDict.Add(queue.StartTime , queue);
+            if (queue.EndTime != 0)
+            {
+                endSpawnDict.Add(queue.EndTime, queue);
+            }
         }
+    }
+
+    private void CheckRoundTime()
+    {
+        currentTime = GameManager.Instance.RoundTime;
+        foreach (var queue in startSpawnDict)
+        {
+            if(queue.Key == currentTime)
+            {
+                Coroutine spawnerCoroutine = StartCoroutine(queue.Value.SpawnMobCoroutine());
+                activeSpawnerDict.Add(queue.Key, spawnerCoroutine);
+            }
+        }
+        int tempQueue = -1;
+        foreach (var queue in endSpawnDict)
+        {
+            if(queue.Key == currentTime)
+            {
+                if(activeSpawnerDict.TryGetValue(queue.Value.StartTime, out Coroutine targetCoroutine))
+                {
+                    StopCoroutine(targetCoroutine);
+                    activeSpawnerDict.Remove(queue.Value.StartTime);
+                    tempQueue = queue.Key;
+                }
+            }
+        }
+        if(tempQueue != -1)
+            endSpawnDict.Remove(tempQueue);
+    }
+
+    IEnumerator CheckSpawnQueue()
+    {
+        CheckRoundTime();
+        yield return new WaitForSeconds(1);
     }
 }

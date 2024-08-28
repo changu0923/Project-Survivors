@@ -31,10 +31,19 @@ public class UILevelUpRewardPanel : MonoBehaviour
 
         foreach (Skill skillElement in getRandomSkills)
         {
-            UIRewardSkillElement element = Instantiate(rewardElementPrefab).GetComponent<UIRewardSkillElement>();
-            element.SetRewardElement(skillElement);
-            element.transform.SetParent(skillHolder.transform);
-            currentElements.Add(element);
+            if (skillElement != null)
+            {
+                UIRewardSkillElement element = Instantiate(rewardElementPrefab).GetComponent<UIRewardSkillElement>();
+                element.SetRewardElement(skillElement);
+                element.transform.SetParent(skillHolder.transform);
+                currentElements.Add(element);
+            }
+            else
+            {
+#if UNITY_EDITOR
+                Debug.LogWarning("[UILevelUpRewardPanel:GetRandomSkill] 반환받은 배열값이 3개 미만 입니다.");
+#endif
+            }
         }
     }
 }

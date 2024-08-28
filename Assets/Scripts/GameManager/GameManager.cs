@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private bool isWin;
     private int roundTime;
+    [SerializeField] int roundEndTime;
     private int killCount;
     private bool isPaused;
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     public int RoundTime { get => roundTime; }
     public int KillCount { get => killCount; }
     public UIManager UiManager { get => uiManager; }
+    public int RoundEndTime { get => roundEndTime; }
 
     public Action OnRoundTimeChanged;
     public Action OnKillCountChanged;

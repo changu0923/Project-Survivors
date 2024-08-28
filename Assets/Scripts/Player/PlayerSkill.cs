@@ -55,23 +55,31 @@ public class PlayerSkill : MonoBehaviour
             playerSkillDict[newSkillName].StartSkill();
         }
     }
-    
-    public bool CheckSkillLevelUpAble()
+
+    public int GetSkillLevel(Skill p_Skill)
     {
-        const int maxLevel = 5;
-        foreach (var skills in playerSkillDict)
+        int currentSkillLevel = -1;
+        foreach(var skill in playerSkillDict)
         {
-            Skill skill = skills.Value;
-            if(skill.SkillLevel == maxLevel)
+            if(skill.Value.SkillName == p_Skill.SkillName)
             {
-                isSkillLevelUpAble = false;
+                currentSkillLevel = skill.Value.SkillLevel;
             }
-            else
+        }
+        return currentSkillLevel;
+    }
+    
+    public List<Skill> GetLevelupAbleSkillList()
+    {
+        List<Skill> resultList = new List<Skill>();
+        foreach(var skill in playerSkillDict)
+        {
+            if(skill.Value.SkillLevel != 5)
             {
-                isSkillLevelUpAble = true;
+                resultList.Add(skill.Value);
             }
         }
 
-        return isSkillLevelUpAble;
+        return resultList;
     }
 }
