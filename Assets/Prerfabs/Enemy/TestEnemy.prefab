@@ -89,6 +89,7 @@ MonoBehaviour:
   maxHP: 15
   damage: 1
   moveSpeed: 1
+  damageFont: {fileID: 6610702054068455926, guid: 88239f4166b7f194a9df03c9e2ffe8ae, type: 3}
   itemList:
   - {fileID: 882247824893154797, guid: 5f458dde29ae008458f5f63009324b9f, type: 3}
 --- !u!95 &6281675941944717431

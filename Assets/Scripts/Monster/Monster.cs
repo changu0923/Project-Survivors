@@ -11,6 +11,7 @@ public abstract class Monster : MonoBehaviour
     [SerializeField] int maxHP;
     [SerializeField] int damage;
     [SerializeField] float moveSpeed;
+    [SerializeField] GameObject damageFont;
 
     [Header("드랍 아이템 정보")]
     [SerializeField] List<GameObject> itemList = new List<GameObject>(); 
@@ -63,6 +64,8 @@ public abstract class Monster : MonoBehaviour
         if(isDead == true) return;
 
         currentHP -= damage;
+        ShowDamageFont(damage);
+
         if(currentHP <= 0)
         {
             isDead = true;
@@ -98,6 +101,13 @@ public abstract class Monster : MonoBehaviour
                 obj.transform.parent = ObjectPoolManager.Instance.transform;
             }
         }        
+    }
+
+    protected void ShowDamageFont(int p_damage)
+    {
+        GameObject obj = ObjectPoolManager.Instance.Instantiate("DamageFont", damageFont);
+        obj.GetComponent<UIDamageFont>().SetDamageFont(p_damage, transform);
+        obj.transform.SetParent(ObjectPoolManager.Instance.transform);
     }
 
     #region Animation
