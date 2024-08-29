@@ -1,4 +1,5 @@
 using Mono.Cecil;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -11,6 +12,9 @@ public class PlayerSkill : MonoBehaviour
     // 스킬 관리
     [SerializeField] SkillManager skillManager;
     private Dictionary<string, Skill> playerSkillDict = new Dictionary<string, Skill>();
+
+    public Action<Skill> OnSkillAddFirstTime;
+
 
     [SerializeField] Skill testSkill;
 
@@ -53,6 +57,7 @@ public class PlayerSkill : MonoBehaviour
         {
             playerSkillDict.Add(newSkillName, newSkill);
             playerSkillDict[newSkillName].StartSkill();
+            OnSkillAddFirstTime?.Invoke(playerSkillDict[newSkillName]);
         }
     }
 

@@ -8,9 +8,16 @@ public class UISkillPanel : MonoBehaviour
     [SerializeField] HorizontalLayoutGroup activeSkillPanel;
     [SerializeField] HorizontalLayoutGroup passiveSkillPanel;
     [SerializeField] GameObject skillElement;
+    private PlayerSkill playerSkill;
 
     private List<UISkillElements> activeSkillList = new List<UISkillElements>();
     private List<UISkillElements> passiveSkillList = new List<UISkillElements>();
+
+    private void Awake()
+    {
+        playerSkill = GameManager.Instance.Player.GetComponent<PlayerSkill>();
+        playerSkill.OnSkillAddFirstTime += AddSkillIcon;
+    }
 
     public void AddSkillIcon(Skill skill)
     {
@@ -22,7 +29,7 @@ public class UISkillPanel : MonoBehaviour
             if (activeSkillList.Count < 6)
             {
                 element.SetImage(skill.SkillSprite);
-                element.transform.parent = activeSkillPanel.transform;
+                element.transform.SetParent(activeSkillPanel.transform);
                 activeSkillList.Add(element);
             }
             else
