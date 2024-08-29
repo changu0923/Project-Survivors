@@ -38,12 +38,11 @@ public class UILevelUpRewardPanel : MonoBehaviour
                 element.transform.SetParent(skillHolder.transform);
                 currentElements.Add(element);
             }
-            else
-            {
-#if UNITY_EDITOR
-                Debug.LogWarning("[UILevelUpRewardPanel:GetRandomSkill] 반환받은 배열값이 3개 미만 입니다.");
-#endif
-            }
+        }
+
+        if(currentElements.Count == 0)
+        {
+            gameObject.SetActive(false);
         }
     }
 }

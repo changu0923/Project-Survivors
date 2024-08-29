@@ -69,14 +69,14 @@ public class PlayerSkill : MonoBehaviour
         return currentSkillLevel;
     }
     
-    public List<Skill> GetLevelupAbleSkillList()
+    public List<string> GetMaxLevelSkillFilter()
     {
-        List<Skill> resultList = new List<Skill>();
+        List<string> resultList = new List<string>();
         foreach(var skill in playerSkillDict)
         {
-            if(skill.Value.SkillLevel != 5)
+            if(skill.Value.SkillLevel == 5)
             {
-                resultList.Add(skill.Value);
+                resultList.Add(skill.Value.SkillName);
             }
         }
 

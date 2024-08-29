@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 5002573551310118745, guid: 598d82250cb677940aad49d823691ccd, type: 3}
       propertyPath: shovelSkill
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3850750069116613441}
     m_RemovedComponents:
     - {fileID: 2723749988152717111, guid: 598d82250cb677940aad49d823691ccd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 598d82250cb677940aad49d823691ccd, type: 3}

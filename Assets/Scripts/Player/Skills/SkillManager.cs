@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -25,36 +24,32 @@ public class SkillManager : MonoBehaviour
             if(skill.SkillLevel == 0)
             {
                 baseSkillList.Add(skill);
+                Debug.Log($"Base skill {skill.SkillName} added.");
             }
         }
     }
 
-    private List<Skill> GetPlayerCurrentSkillList()
+    #region
+    private List<Skill> GetLevelupAbleSkillList()
     {
         PlayerSkill playerSkill = GameManager.Instance.Player.GetComponent<PlayerSkill>();
-        List<Skill> availableSkillListList = playerSkill.GetLevelupAbleSkillList();
+        List<string> maxLevelSkillFilter = playerSkill.GetMaxLevelSkillFilter();
+        HashSet<string> maxLevelSkillName = new HashSet<string>();
 
-        HashSet<string> availableSkillName = new HashSet<string>();
-        foreach (Skill skill in availableSkillListList)
+        foreach (var skillName in maxLevelSkillFilter)
         {
-            availableSkillName.Add(skill.SkillName);
+            maxLevelSkillName.Add(skillName);
         }
 
-        List<Skill> resultList = new List<Skill>();
-        foreach (Skill skill in baseSkillList)
-        {
-            if(availableSkillName.Contains(skill.SkillName))
-            {
-                resultList.Add(skill);
-            }
-        }
-
-        return resultList;
+        List<Skill> levelupAbleSkillList = baseSkillList;
+        levelupAbleSkillList.RemoveAll(skill => maxLevelSkillName.Contains(skill.SkillName));
+        return levelupAbleSkillList;
     }
-    
+    #endregion
+
     public Skill[] GetRandomBaseSkill()
     {        
-        List<Skill> currentSkillList = GetPlayerCurrentSkillList();
+        List<Skill> currentSkillList = GetLevelupAbleSkillList();
         int maxRange = currentSkillList.Count;
         Skill[] randomSkillArray = new Skill[3];
         HashSet<int> usedIndex = new HashSet<int>();
