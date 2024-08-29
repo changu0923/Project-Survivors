@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerSkill : MonoBehaviour
 {
     private Player player;
-    private bool isSkillLevelUpAble = true;
+
     // 스킬 관리
     [SerializeField] SkillManager skillManager;
     private Dictionary<string, Skill> playerSkillDict = new Dictionary<string, Skill>();

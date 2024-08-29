@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4049407178349372893}
   - component: {fileID: 2728043839507223063}
-  - component: {fileID: 4219568159582920931}
   - component: {fileID: 8320378367645388185}
   - component: {fileID: 418051410116437480}
   m_Layer: 8
@@ -87,27 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &4219568159582920931
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6906059899472882078}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &8320378367645388185
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,7 +135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9153036197782493744}
   - component: {fileID: 9153036197782493745}
-  - component: {fileID: 5507828658224815538}
   - component: {fileID: 3931929973405687405}
   - component: {fileID: 2280545310374392139}
   m_Layer: 8
@@ -234,27 +211,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &5507828658224815538
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9153036197782493711}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &3931929973405687405
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -355,6 +311,7 @@ PrefabInstance:
       objectReference: {fileID: 1011659444748634674}
     m_RemovedComponents:
     - {fileID: 2723749988152717111, guid: 598d82250cb677940aad49d823691ccd, type: 3}
+    - {fileID: 1631733771304842144, guid: 598d82250cb677940aad49d823691ccd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 598d82250cb677940aad49d823691ccd, type: 3}
 --- !u!1 &3118424656334176420 stripped
 GameObject:

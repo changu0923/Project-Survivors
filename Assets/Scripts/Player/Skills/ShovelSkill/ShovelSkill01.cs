@@ -20,6 +20,7 @@ public class ShovelSkill01 : Skill
     {
         transform.localScale = new Vector3(scaleX, scaleY, 1f);
         player = GameManager.Instance.Player;
+        SkillDamage = weaponDamage;
     }
 
     public override void Use()
@@ -30,7 +31,6 @@ public class ShovelSkill01 : Skill
             transform.localPosition = Vector3.zero;
             isActive = true; 
             skillCoroutine = StartCoroutine(ShovelSpinCoroutine());
-
         }
     }
 

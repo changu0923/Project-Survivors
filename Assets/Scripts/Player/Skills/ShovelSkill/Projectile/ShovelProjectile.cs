@@ -16,8 +16,9 @@ public class ShovelProjectile : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
-            Monster monster = other.gameObject.GetComponent<Monster>();
+            Monster monster = other.transform.GetComponent<Monster>();
             monster.TakeDamage(shovelSkill.SkillDamage);
+            Debug.Log($"[{monster.name}] TakeDamage({shovelSkill.SkillDamage})");
         }
     }
 }

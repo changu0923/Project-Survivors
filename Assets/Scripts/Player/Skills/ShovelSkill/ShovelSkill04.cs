@@ -19,6 +19,7 @@ public class ShovelSkill04 : Skill
     {
         transform.localScale = new Vector3(scaleX, scaleY, 1f);
         player = GameManager.Instance.Player;
+        SkillDamage = weaponDamage;
     }
 
     public override void Use()
