@@ -49,6 +49,7 @@ public class BulletSkill04 : Skill
         if (target == null) return;
 
         bullet = ObjectPoolManager.Instance.Instantiate("BulletSkillProjectile", bulletPrefab).GetComponent<BulletSkillProjectile>();
+        bullet.transform.SetParent(ObjectPoolManager.Instance.transform);
         bullet.transform.position = player.transform.position;
         bullet.Shoot(damage, bulletSpeed, target);
     }

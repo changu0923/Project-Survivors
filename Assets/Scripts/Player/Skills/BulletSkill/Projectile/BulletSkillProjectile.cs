@@ -10,7 +10,7 @@ public class BulletSkillProjectile : MonoBehaviour
     private float moveSpeed;
     private Vector2 moveDir;
 
-    public Transform targetTransform;
+    private Transform targetTransform;
     private Rigidbody2D rb;
     private Player player;
 

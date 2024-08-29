@@ -66,7 +66,8 @@ public abstract class Skill : MonoBehaviour
 
     public int GetSkillLevel()
     {
-        PlayerSkill playerSkill = skillOnwer.GetComponent<PlayerSkill>();   
+        PlayerSkill playerSkill = GameManager.Instance.Player.GetComponent<PlayerSkill>();
+        Skill pSkill = this;    
         return playerSkill.GetSkillLevel(this);
     }
 

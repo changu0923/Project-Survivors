@@ -24,7 +24,6 @@ public class SkillManager : MonoBehaviour
             if(skill.SkillLevel == 0)
             {
                 baseSkillList.Add(skill);
-                Debug.Log($"Base skill {skill.SkillName} added.");
             }
         }
     }

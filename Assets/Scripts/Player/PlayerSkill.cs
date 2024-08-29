@@ -58,15 +58,13 @@ public class PlayerSkill : MonoBehaviour
 
     public int GetSkillLevel(Skill p_Skill)
     {
-        int currentSkillLevel = -1;
-        foreach(var skill in playerSkillDict)
+        int currentSkillLevel = 0;
+        if (playerSkillDict.TryGetValue(p_Skill.SkillName, out Skill targetSkill)) 
         {
-            if(skill.Value.SkillName == p_Skill.SkillName)
-            {
-                currentSkillLevel = skill.Value.SkillLevel;
-            }
+            currentSkillLevel = targetSkill.SkillLevel;            
         }
-        return currentSkillLevel;
+
+        return currentSkillLevel + 1;
     }
     
     public List<string> GetMaxLevelSkillFilter()
