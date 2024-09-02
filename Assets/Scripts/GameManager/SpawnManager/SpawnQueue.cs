@@ -13,8 +13,7 @@ public class SpawnQueue
     [SerializeField] int startTime; 
     [Header("스폰 중지 시간")]
     [SerializeField] int endTime;
-    [Header("스폰 주기")]
-    [Tooltip("몇 초마다 스폰시킬것인지 지정합니다.")]
+    [Header("스폰 주기")][Tooltip("몇 초마다 스폰시킬것인지 지정합니다.")]
     [SerializeField] float spawnRate;
     [Header("스폰 마리 수")]
     [SerializeField] int spawnMobCount;

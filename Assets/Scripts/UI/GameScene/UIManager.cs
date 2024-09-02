@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] UILevelUpRewardPanel uILevelUpRewardPanel;
+    [SerializeField] UIGameOverPanel uIGameOverPanel;
 
     public UILevelUpRewardPanel UILevelUpRewardPanel { get => uILevelUpRewardPanel; }
 
@@ -25,5 +26,10 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.PauseGame();
             count++;
         }
+    }
+
+    public void ShowGameOverPanel()
+    {
+        uIGameOverPanel.gameObject.SetActive(true);
     }
 }

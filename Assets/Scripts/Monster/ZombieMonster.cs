@@ -40,7 +40,12 @@ public class ZombieMonster : Monster
 
     protected override void Move()
     {
-        if (IsDead == true) return;
+        base.Move();
+        if (IsDead == true || IsGameOver == true)
+        {
+            Rb.velocity = Vector2.zero;
+            return;
+        }
 
         Rb.velocity = targetDir * MoveSpeed;
     }

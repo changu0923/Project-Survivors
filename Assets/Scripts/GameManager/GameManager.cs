@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,9 +40,11 @@ public class GameManager : MonoBehaviour
     public int KillCount { get => killCount; }
     public UIManager UiManager { get => uiManager; }
     public int RoundEndTime { get => roundEndTime; }
+    public bool IsWin { get => isWin;}
 
     public Action OnRoundTimeChanged;
     public Action OnKillCountChanged;
+    public Action OnGameOverCalled;
 
     private void Start()
     {
@@ -70,27 +73,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayerLevelUpReward(int levelUpAmount)
+    public void GameOver(bool resultWin)
     {
-        uiManager.OnLevelUpRewardPopUP(levelUpAmount);
-    }
-
-    private void GameOver()
-    {
-        if(isWin == true)
+        if(resultWin == false)
         {
-            // DO Win Action.
+            isWin = false;
         }
         else
         {
-            // Do Lose Action.
+            isWin = true;
         }
+        OnGameOverCalled?.Invoke();
+        uiManager.ShowGameOverPanel();
+    }
+
+    public void PlayerLevelUpReward(int levelUpAmount)
+    {
+        uiManager.OnLevelUpRewardPopUP(levelUpAmount);
     }
 
     public void AddKillCount()
     {
         killCount++;
         OnKillCountChanged?.Invoke();
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     IEnumerator RoundTimerCoroutine()

@@ -19,6 +19,7 @@ public abstract class Monster : MonoBehaviour
     private bool isDead;
     private bool isFacingLeft;
     private bool attackFlag;
+    private bool isGameOver;
 
     private Player target;
     private Animator animator;
@@ -38,6 +39,7 @@ public abstract class Monster : MonoBehaviour
     public SpriteRenderer SpriteRenderer { get => spriteRenderer; set => spriteRenderer = value; }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public bool AttackFlag { get => attackFlag; set => attackFlag = value; }
+    public bool IsGameOver { get => isGameOver; set => isGameOver = value; }
     #endregion
 
     protected virtual void Init()
@@ -46,17 +48,19 @@ public abstract class Monster : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();   
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         target = GameManager.Instance.Player;
+        GameManager.Instance.OnGameOverCalled += GameOverEventCalled;
 
         int monsterLayer = LayerMask.NameToLayer("Monster");
         gameObject.layer = monsterLayer;
         currentHP = maxHP;
         isDead = false;
+        isGameOver = !target.isAlive;
         AnimationInit();
-    }
+    } 
 
     protected virtual void Move()
     {
-        // 플레이어를 향해 이동
+
     }
 
     public virtual void TakeDamage(int damage)
@@ -71,6 +75,11 @@ public abstract class Monster : MonoBehaviour
             isDead = true;
             Die();
         }
+    }
+
+    private void GameOverEventCalled()
+    {
+        isGameOver = true;
     }
 
     protected virtual void Die()     

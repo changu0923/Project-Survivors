@@ -1,20 +1,15 @@
-using Mono.Cecil;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
     private Player player;
 
-    // 스킬 관리
     [SerializeField] SkillManager skillManager;
     private Dictionary<string, Skill> playerSkillDict = new Dictionary<string, Skill>();
 
     public Action<Skill> OnSkillAddFirstTime;
-
 
     [SerializeField] Skill testSkill;
 
@@ -84,5 +79,13 @@ public class PlayerSkill : MonoBehaviour
         }
 
         return resultList;
+    }
+
+    public void StopAllSkill()
+    {
+        foreach (var skill in playerSkillDict)
+        {
+            skill.Value.StopSkill();
+        }
     }
 }

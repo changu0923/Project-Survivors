@@ -37,6 +37,9 @@ public class PlayerMove : MonoBehaviour
 
     public void GetInput()
     {
+        if (player.isAlive == false)
+            return;
+
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
         if(inputX == 0f && inputY == 0f )

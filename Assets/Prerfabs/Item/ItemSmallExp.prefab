@@ -169,6 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: ItemSmallEXP
-  itemAmount: 100
+  itemAmount: 10
   itemDropChance: 0.75
   itemPrefab: {fileID: 882247824893154797}
