@@ -39,7 +39,7 @@ public class UIDamageFont : MonoBehaviour
         transform.position = endPosition;
         damageText.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
 
-        ObjectPoolManager.Instance.Destory("DamageFont", gameObject);
+        ObjectPoolManager.Instance.Destroy("DamageFont", gameObject);
     }
 
 }

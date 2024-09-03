@@ -12,6 +12,7 @@ public class UILevelUpRewardPanel : MonoBehaviour
 
     private void OnEnable()
     {
+        AudioManager.Instance.Play(AudioManager.Instance.Levelup);
         GetRandomSkill();
     }
 

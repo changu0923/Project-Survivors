@@ -27,16 +27,19 @@ public class UIMenuPanel : MonoBehaviour
 
     private void OnStartButtonClick()
     {
+        AudioManager.Instance.PlayUIButton();
         SceneManager.LoadScene("GameScene");
     }
 
     private void OnOptionButtonClick()
     {
+        AudioManager.Instance.PlayUIButton();
         // TOOD : Options
     }
 
     private void OnExitButtonClick()
     {
+        AudioManager.Instance.PlayUIButton();
         Application.Quit();
     }
 

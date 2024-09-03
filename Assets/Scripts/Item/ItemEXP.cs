@@ -12,7 +12,7 @@ public class ItemEXP : Item
     public override void Use()
     {
         Player.GainEXP(ItemAmount);
-        ObjectPoolManager.Instance.Destory(ItemName, gameObject);
+        ObjectPoolManager.Instance.Destroy(ItemName, gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

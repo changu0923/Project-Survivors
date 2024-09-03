@@ -69,8 +69,9 @@ public abstract class Monster : MonoBehaviour
 
         currentHP -= damage;
         ShowDamageFont(damage);
+        AudioManager.Instance.Play(AudioManager.Instance.Melee0);
 
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             isDead = true;
             Die();
@@ -87,12 +88,11 @@ public abstract class Monster : MonoBehaviour
         rb.velocity = Vector2.zero;
         DropItem();
         GameManager.Instance.AddKillCount();
-        // 1. 죽는 애니메이션 재생하며, 리지드바디를 없애 몸 관통 가능하게 함
         int deadLayer = LayerMask.NameToLayer("Dead");
         gameObject.layer = deadLayer;
         AnimationDie();
-        // 2. 애니메이션이 끝난 후 안보이게 하고, 오브젝트 풀에 집어넣음 
         StartCoroutine(RemoveBody());
+        AudioManager.Instance.Play(AudioManager.Instance.Dead);
     }
 
     protected virtual void DropItem()
@@ -155,6 +155,6 @@ public abstract class Monster : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         AnimationReset();
-        ObjectPoolManager.Instance.Destory(monsterName, gameObject);
+        ObjectPoolManager.Instance.Destroy(monsterName, gameObject);
     }
 }

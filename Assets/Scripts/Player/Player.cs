@@ -54,8 +54,9 @@ public class Player : MonoBehaviour
 
         currentHP -= dmg;
         OnPlayerHealthChanged?.Invoke();
+        AudioManager.Instance.Play(AudioManager.Instance.Hit0);
 
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             currentHP = 0;
             isDead = true;
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
     public void GainEXP(int iValue)
     {
         currentEXP += iValue;
+        AudioManager.Instance.Play(AudioManager.Instance.Coin);
         if (currentEXP >= maxEXP)
         {
             LevelUP();

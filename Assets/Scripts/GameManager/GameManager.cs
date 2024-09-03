@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         killCount = 0;
         OnRoundTimeChanged += CheckWinTimer;
         StartCoroutine(RoundTimerCoroutine());
+        AudioManager.Instance.PlayBGM();
     }
 
     private void CheckWinTimer()
@@ -84,14 +85,17 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(bool resultWin)
     {
-        if(resultWin == false)
+        AudioManager.Instance.PlayBGM();
+        if (resultWin == false)
         {
+            AudioManager.Instance.Play(AudioManager.Instance.Lose);
             isWin = false;
         }
         else
         {
+            AudioManager.Instance.Play(AudioManager.Instance.Win);
             isWin = true;
-        }
+        }        
         OnGameOverCalled?.Invoke();
         uiManager.ShowGameOverPanel();
     }

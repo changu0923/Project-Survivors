@@ -51,6 +51,6 @@ public class ScytheSkillProjectile : MonoBehaviour
     IEnumerator DestoryCoroutine()
     {
         yield return new WaitForSeconds(10f);
-        ObjectPoolManager.Instance.Destory("ScytheSkillProjectile", gameObject);
+        ObjectPoolManager.Instance.Destroy("ScytheSkillProjectile", gameObject);
     }
 }

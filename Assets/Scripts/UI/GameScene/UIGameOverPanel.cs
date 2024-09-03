@@ -23,6 +23,7 @@ public class UIGameOverPanel : MonoBehaviour
 
     private void OnCheckButtonClicked()
     {
+        AudioManager.Instance.PlayUIButton();
         GameManager.Instance.ChangeScene("TitleScene");
     }
 

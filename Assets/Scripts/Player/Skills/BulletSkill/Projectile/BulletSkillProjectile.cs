@@ -57,7 +57,7 @@ public class BulletSkillProjectile : MonoBehaviour
     IEnumerator BulletDestoryCoroutine()
     { 
         yield return new WaitForSeconds(10f);
-        ObjectPoolManager.Instance.Destory("BulletSkillProjectile", gameObject);
+        ObjectPoolManager.Instance.Destroy("BulletSkillProjectile", gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -66,7 +66,7 @@ public class BulletSkillProjectile : MonoBehaviour
         {
             Monster currentMob = collision.transform.GetComponent<Monster>();
             currentMob.TakeDamage(this.damage);
-            ObjectPoolManager.Instance.Destory("BulletSkillProjectile", gameObject);
+            ObjectPoolManager.Instance.Destroy("BulletSkillProjectile", gameObject);
         }
     }
 }

@@ -88,7 +88,7 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
-    public void Destory(string poolName, GameObject obj)
+    public void Destroy(string poolName, GameObject obj)
     {
         if (poolDict.ContainsKey(poolName))
         {
