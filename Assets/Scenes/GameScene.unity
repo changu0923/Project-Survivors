@@ -3877,6 +3877,12 @@ MonoBehaviour:
   - {fileID: 1011659444748634674, guid: 39ab49b9c2933674da85083bccc461d2, type: 3}
   - {fileID: -651631376741127364, guid: 3c7994773e2c23941bdd11f271dc0749, type: 3}
   - {fileID: 9203572789721348074, guid: 8d38d12ff49a17a4eb845ef67c465b88, type: 3}
+  - {fileID: -8886673956083219065, guid: 56529b025e14af04ea8585505d246432, type: 3}
+  - {fileID: -7159512143836647241, guid: 393c16513ced1444eb729eb295a54f99, type: 3}
+  - {fileID: 336198131300549100, guid: c7f6062300ae8784ba1d642fc580f06d, type: 3}
+  - {fileID: 1308095504030299368, guid: e7e336f52e8a4734a9b13ea99242de6e, type: 3}
+  - {fileID: 3254426145740062576, guid: 3f05052596ffb614bb99ac3ce0686870, type: 3}
+  - {fileID: 3826057488041719941, guid: 223b2bbe6db332049acca1301db6c1ba, type: 3}
 --- !u!1 &2046325375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,5 +4299,15 @@ MonoBehaviour:
   - monsterPrefab: {fileID: 4121058351756717515, guid: 0d954ed38a5893546a6435099c9a4c95, type: 3}
     startTime: 1
     endTime: 0
-    spawnRate: 0.25
+    spawnRate: 5
     spawnMobCount: 5
+  - monsterPrefab: {fileID: 4121058351756717515, guid: 0d954ed38a5893546a6435099c9a4c95, type: 3}
+    startTime: 30
+    endTime: 0
+    spawnRate: 5
+    spawnMobCount: 10
+  - monsterPrefab: {fileID: 4121058351756717515, guid: 0d954ed38a5893546a6435099c9a4c95, type: 3}
+    startTime: 60
+    endTime: 0
+    spawnRate: 1
+    spawnMobCount: 15
