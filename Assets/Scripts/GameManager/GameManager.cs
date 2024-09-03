@@ -56,7 +56,16 @@ public class GameManager : MonoBehaviour
         // 게임 초기화 
         roundTime = 0;
         killCount = 0;
+        OnRoundTimeChanged += CheckWinTimer;
         StartCoroutine(RoundTimerCoroutine());
+    }
+
+    private void CheckWinTimer()
+    {
+        if (roundTime == roundEndTime)
+        {
+            GameOver(true);
+        }
     }
 
     public void PauseGame()
