@@ -80,7 +80,7 @@ MonoBehaviour:
   skillLevel: 5
   skillSprite: {fileID: -344242777, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   skillRPM: 35
-  damage: 77
+  damage: 150
   targetCount: 5
   bulletSpeed: 11
   scythePrefab: {fileID: 8654431530548076838, guid: 20761c8ff82e36643999fe644567ef7b, type: 3}

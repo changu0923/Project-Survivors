@@ -961,7 +961,7 @@ MonoBehaviour:
   skillSprite: {fileID: -181907988, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   skillRPM: 1
   weaponDamage: 150
-  weaponRPM: 60
+  weaponRPM: 120
   weaponPrefab: {fileID: 3118424656334176420}
   scaleX: 1.5
   scaleY: 1.5

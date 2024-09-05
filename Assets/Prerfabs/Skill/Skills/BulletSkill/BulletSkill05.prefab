@@ -79,7 +79,7 @@ MonoBehaviour:
   skillType: 0
   skillLevel: 5
   skillSprite: {fileID: -205726582, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  skillRPM: 60
-  damage: 23
+  skillRPM: 120
+  damage: 100
   bulletSpeed: 20
   bulletPrefab: {fileID: 2010352058838445661, guid: dc5c1dfddf92c034f891aa16d92d39c7, type: 3}
