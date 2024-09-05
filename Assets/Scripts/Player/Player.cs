@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
         while (currentEXP >= maxEXP)
         {
             currentEXP -= maxEXP;
+            maxEXP = maxEXP + (int)(maxEXP * 0.33f);
             level++;
             levelupCount++;
         }

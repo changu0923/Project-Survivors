@@ -547,7 +547,7 @@ RectTransform:
   - {fileID: 1672054023}
   - {fileID: 1479595199}
   m_Father: {fileID: 854603420}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80aef51b4210a4c42b08d72a4aa4a7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundEndTime: 120
+  roundEndTime: 180
   player: {fileID: 205168336}
   uiManager: {fileID: 854603421}
 --- !u!4 &839684729
@@ -1287,7 +1287,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_TargetDisplay: 0
 --- !u!224 &854603420
 RectTransform:
@@ -1301,8 +1301,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1324725928}
   - {fileID: 241700674}
+  - {fileID: 1324725928}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1453,9 +1453,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2319,7 +2319,7 @@ RectTransform:
   - {fileID: 126698010}
   - {fileID: 1375407915}
   m_Father: {fileID: 854603420}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2780,9 +2780,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4094,7 +4094,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 978012912, guid: 99a24620d31e5ce4e823c32d11e17c2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4306,7 +4306,7 @@ MonoBehaviour:
     endTime: 0
     spawnRate: 5
     spawnMobCount: 10
-  - monsterPrefab: {fileID: 4121058351756717515, guid: 0d954ed38a5893546a6435099c9a4c95, type: 3}
+  - monsterPrefab: {fileID: 4036004776650171421, guid: 7172cbb359c221b4ea466642021ef883, type: 3}
     startTime: 60
     endTime: 0
     spawnRate: 1
