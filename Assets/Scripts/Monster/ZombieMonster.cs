@@ -7,10 +7,12 @@ public class ZombieMonster : Monster
 {
     private Vector2 targetDir;
     private Coroutine AttackCoolTimeCoroutine;
+    [SerializeField] Transform shadowTransform;
 
     private void OnEnable()
     {
         Init();
+        shadowTransform.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -67,6 +69,7 @@ public class ZombieMonster : Monster
     protected override void Die()
     {
         base.Die();
+        shadowTransform.gameObject.SetActive(false);
     }
 
     protected override void DropItem()
