@@ -1,0 +1,6 @@
+﻿Name,HP,Damage,Speed
+Zombie,15,1,1
+Skeleton,150,1,1
+ZombieUp,50,15,1
+SkeletonUp,300,15,2
+BossZombie,3000,25,2

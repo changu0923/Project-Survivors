@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 
 public abstract class Monster : MonoBehaviour
@@ -52,6 +53,14 @@ public abstract class Monster : MonoBehaviour
 
         int monsterLayer = LayerMask.NameToLayer("Monster");
         gameObject.layer = monsterLayer;
+
+        MonsterData monsterData = new MonsterData();
+        monsterData = GameManager.Instance.CsvManager.GetMonsterData(monsterName);
+
+        maxHP = monsterData.maxHP;
+        damage = monsterData.damage;
+        moveSpeed = monsterData.moveSpeed;
+
         currentHP = maxHP;
         isDead = false;
         isGameOver = !target.isAlive;

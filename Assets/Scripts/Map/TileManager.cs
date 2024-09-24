@@ -24,10 +24,34 @@ public class TileManager : MonoBehaviour
             Vector2Int.up,
             Vector2Int.down,
             Vector2Int.left,
-            Vector2Int.right};
+            Vector2Int.right
+        };
 
         playerTransform = GameManager.Instance.Player.transform;
         TileGenerate(Vector2.zero);
+    }
+
+    private void Update()
+    {
+        if (playerTransform == null) return;
+        Vector2Int playerCell = PosToCell(playerTransform.position);
+        bool isBorder = false;
+        Vector2Int borderCell = playerCell * borderDistance;
+        foreach (Vector2Int dir in directionCell)
+        {
+            if (false == tiledCell.Contains(playerCell + (dir * borderDistance)))
+            {
+                isBorder = true;
+                break;
+            }
+        }
+
+        if (isBorder)
+        {
+            TileGenerate(playerCell);
+            TileDestroy(playerCell);
+        }
+
     }
 
     public void TileGenerate(Vector2 center)
@@ -85,27 +109,6 @@ public class TileManager : MonoBehaviour
         return Vector2Int.RoundToInt(pos / tileSize);
     }
 
-    private void Update()
-    {
-        if (playerTransform == null) return;
-        Vector2Int playerCell = PosToCell(playerTransform.position);
-        bool isBorder = false;
-        Vector2Int borderCell = playerCell * borderDistance;
-        foreach (Vector2Int dir in directionCell)
-        {
-            if (false == tiledCell.Contains(playerCell + (dir * borderDistance)))
-            {
-                isBorder = true;
-                break;
-            }
-        }
 
-        if (isBorder)
-        {
-            TileGenerate(playerCell);
-            TileDestroy(playerCell);
-        }
-
-    }
 
 }

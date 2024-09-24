@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Player player;
     [SerializeField] UIManager uiManager;
+    private CSVManager csvManager;
 
     public Player Player { get => player; }
     public int RoundTime { get => roundTime; }
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     public UIManager UiManager { get => uiManager; }
     public int RoundEndTime { get => roundEndTime; }
     public bool IsWin { get => isWin;}
+    public CSVManager CsvManager { get => csvManager; }
 
     public Action OnRoundTimeChanged;
     public Action OnKillCountChanged;
@@ -48,6 +50,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (csvManager == null) 
+        {
+           csvManager = FindObjectOfType<CSVManager>();
+        }
         InitGame();
     }
 
